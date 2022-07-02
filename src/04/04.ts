@@ -1,16 +1,25 @@
-import {student, StudentType} from "../02/02";
+const ages = [18, 20, 22, 1, 100, 90, 15, 14];
 
-debugger
-export const sum = (a: number, b: number) => {
-    return a + b
+const predicat = (age: number) => {
+    return age > 90
 }
 
-const res = sum(sum(1,2), sum(1,3));
+const oldAges = []; // >90
 
+type CourseType = {
+    title: string,
+    price: number
+}
 
-export const addSkill = (student: StudentType, skill: string) => {
-    student.technologies.push({
-        id: new Date().getTime(),
-        title: skill
-    })
+const courses =  [
+    {title: "css",price: 110},
+    {title: "JS",price: 200},
+    {title: "React",price: 150}
+]
+
+const cheapPrediCate = (course: CourseType) => {
+    return course.price < 160
+}
+
+const cheapCourses= []
 }
