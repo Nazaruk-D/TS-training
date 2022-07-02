@@ -20,6 +20,3 @@ const courses =  [
 const cheapPrediCate = (course: CourseType) => {
     return course.price < 160
 }
-
-const cheapCourses= []
-}
