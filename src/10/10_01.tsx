@@ -41,5 +41,12 @@ export function moveUserToOtheHouse (u: UserWithLaptopType & UserWithBookType, h
 
 export function addNewBooksToUser (u: UserWithLaptopType & UserWithBookType, newBook: string) {
     return {...u, books: [...u.books, newBook]}
+}
 
+export function updateBook (u: UserWithLaptopType & UserWithBookType, oldBook: string, newBook: string) {
+    return {...u, books: u.books.map(el => el === oldBook ? newBook : el)}
+}
+
+export function deleteBook (u: UserWithLaptopType & UserWithBookType, deleteBook: string) {
+    return {...u, books: u.books.filter(el => el !== deleteBook )}
 }

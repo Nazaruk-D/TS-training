@@ -1,8 +1,8 @@
 import {
-    addNewBooksToUser,
+    addNewBooksToUser, deleteBook,
     makeHairStyle,
     moveUser,
-    moveUserToOtheHouse,
+    moveUserToOtheHouse, updateBook,
     updateUserLaptop,
     UserType,
     UserWithBookType,
@@ -123,4 +123,53 @@ test ('add new book to user', ()=>{
     expect(user.books).not.toBe(userCope.books);
     expect(userCope.address.house).toBe(12);
     expect(userCope.books[4]).toBe('ts');
+})
+
+test ('update  js to ts', ()=>{
+
+    let user: UserWithLaptopType & UserWithBookType = {
+        name: "Dima",
+        hair: 32,
+        address: {
+            city: "Minsk",
+            house: 12
+        },
+        laptop: {
+            title: "ZenBool"
+        },
+        books: ['css', 'html', 'js', 'react']
+    }
+
+    const userCope = updateBook (user, 'js', 'ts' );
+
+    expect(user).not.toBe(userCope);
+    expect(user.laptop).toBe(userCope.laptop);
+    expect(user.address).toBe(userCope.address);
+    expect(user.books).not.toBe(userCope.books);
+    expect(userCope.books[2]).toBe('ts');
+})
+
+test ('delete book', ()=>{
+
+    let user: UserWithLaptopType & UserWithBookType = {
+        name: "Dima",
+        hair: 32,
+        address: {
+            city: "Minsk",
+            house: 12
+        },
+        laptop: {
+            title: "ZenBool"
+        },
+        books: ['css', 'html', 'js', 'react']
+    }
+
+    const userCope = deleteBook (user, 'js');
+
+    expect(user).not.toBe(userCope);
+    expect(user.laptop).toBe(userCope.laptop);
+    expect(user.address).toBe(userCope.address);
+    expect(user.books).not.toBe(userCope.books);
+    expect(userCope.books[2]).toBe('react');
+    expect(userCope.books.length).toBe(3);
 })
